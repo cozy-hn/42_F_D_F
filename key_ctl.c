@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ctl_color.c                                        :+:      :+:    :+:   */
+/*   key_ctl.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiko <jiko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 20:33:01 by jiko              #+#    #+#             */
-/*   Updated: 2023/08/07 21:28:17 by jiko             ###   ########.fr       */
+/*   Created: 2023/08/08 18:38:50 by jiko              #+#    #+#             */
+/*   Updated: 2023/08/08 22:32:57 by jiko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	create_trgb(int t, int r, int g, int b)
+int	mlx_close(int keycode, t_vars *vars)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	if (keycode == ESC)
+	{
+		mlx_destroy_window(vars->mlx, vars->win);
+		exit(0);
+	}
+	return (0);
 }
 
-int	get_t(int trgb)
+int	click_x(t_vars *vars)
 {
-	return (trgb & (0xFF << 24));
-}
-
-int	get_r(int trgb)
-{
-	return (trgb & (0xFF << 16));
-}
-
-int	get_g(int trgb)
-{
-	return (trgb & (0xFF << 8));
-}
-
-int	get_b(int trgb)
-{
-	return (trgb & 0xFF);
+	mlx_destroy_window(vars->mlx, vars->win);
+	exit(0);
+	return (0);
 }
