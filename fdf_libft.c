@@ -6,7 +6,7 @@
 /*   By: jiko <jiko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 21:09:25 by jiko              #+#    #+#             */
-/*   Updated: 2023/08/08 23:06:03 by jiko             ###   ########.fr       */
+/*   Updated: 2023/08/09 21:47:51 by jiko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,25 @@ void	ft_putstr_fd(char *s, int fd)
 		ft_putchar_fd(*s++, fd);
 }
 
+int	ft_atoi(char *str)
+{
+	long long	numminus;
+	long long	num;
+
+	numminus = 1;
+	num = 0;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			numminus *= -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		num = num * 10 + (*str - '0');
+		str++;
+	}
+	return ((int)(numminus * num));
+}

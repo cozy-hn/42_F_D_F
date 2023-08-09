@@ -6,7 +6,7 @@
 /*   By: jiko <jiko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 22:36:40 by jiko              #+#    #+#             */
-/*   Updated: 2023/08/08 22:41:14 by jiko             ###   ########.fr       */
+/*   Updated: 2023/08/09 16:37:47 by jiko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int	is_deli(char c, char c2)
 
 void	check_word_set_i(const char *str, char c, int *num_word, int *i)
 {
-	*i = 0;
 	*num_word = 0;
+	if (i)
+		*i = 0;
 	while (*str)
 	{
 		while (is_deli(*str, c) && *str)

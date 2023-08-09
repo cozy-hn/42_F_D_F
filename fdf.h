@@ -6,7 +6,7 @@
 /*   By: jiko <jiko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 21:25:11 by jiko              #+#    #+#             */
-/*   Updated: 2023/08/08 23:06:46 by jiko             ###   ########.fr       */
+/*   Updated: 2023/08/09 22:24:43 by jiko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,17 @@ typedef struct s_vars {
 	void	*win;
 }	t_vars;
 
+typedef struct s_point {
+	double	x;
+	double	y;
+	double	z;
+	int		c;
+}	t_point;
+
 typedef struct s_map {
-	int	height;
-	int	width;
+	int		height;
+	int		width;
+	t_point	**map;
 }	t_map;
 
 enum e_Keys {
@@ -66,5 +74,10 @@ char	**ft_split(char const *str, char c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
+int		set_height_width(t_map *map, int fd);
+int		malloc_map(t_map *map);
+int		set_map(t_map *map, int fd);
+void	open_map(t_map *map, char *path);
+int		ft_atoi(char *str);
 
 #endif
