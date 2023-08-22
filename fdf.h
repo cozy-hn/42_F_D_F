@@ -6,7 +6,7 @@
 /*   By: jiko <jiko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 21:25:11 by jiko              #+#    #+#             */
-/*   Updated: 2023/08/23 04:37:06 by jiko             ###   ########.fr       */
+/*   Updated: 2023/08/23 06:06:45 by jiko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ int		*set_bresenham(t_point p1, t_point p2, int *bresenham_list);
 void	dxdy(int *b_list, t_data *img);
 void	dydx(int *b_list, t_data *img);
 void	bresenham(int *b_list, t_data *img);
+void	draw_img(t_map *map, t_data *img);
 
 #endif

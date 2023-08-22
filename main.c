@@ -6,7 +6,7 @@
 /*   By: jiko <jiko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 20:39:59 by jiko              #+#    #+#             */
-/*   Updated: 2023/08/23 04:40:02 by jiko             ###   ########.fr       */
+/*   Updated: 2023/08/23 06:09:01 by jiko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 {
 	t_data	img;
 	t_vars	vars;
+	t_map	map;
 	int		bresenham_list[11];
 
 	vars.mlx = mlx_init();
@@ -31,9 +32,8 @@ int	main(int argc, char **argv)
 	img.img = mlx_new_image(vars.mlx, Window_Max_X, Window_Max_Y);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \
 	&img.line_length, &img.endian);
-	// my_mlx_pixel_put(&img, 20, 20, create_trgb(0, 255, 255, 255));
-	set_bresenham((t_point){50, 50, 0, 0}, (t_point){500, 500, 0, 0}, bresenham_list);
-	bresenham(bresenham_list, &img);
+	open_map(&map, argv[1]);
+	draw_img(&map, &img);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	mlx_hook(vars.win, KeyPress, 0, mlx_close, &vars);
 	mlx_hook(vars.win, Click_X, 0, click_x, &vars);
