@@ -6,7 +6,7 @@
 /*   By: jiko <jiko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 21:25:11 by jiko              #+#    #+#             */
-/*   Updated: 2023/08/09 22:24:43 by jiko             ###   ########.fr       */
+/*   Updated: 2023/08/23 04:37:06 by jiko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 # include "get_next_line.h"
 # include "./minilibx_mms_20210621/mlx.h"
 # include <fcntl.h>
+# include <math.h>
+
+
+
+/*************************/
+# include <stdio.h> 
+/*************************/
+
+
+
 
 typedef struct s_data {
 	void	*img;
@@ -79,5 +89,12 @@ int		malloc_map(t_map *map);
 int		set_map(t_map *map, int fd);
 void	open_map(t_map *map, char *path);
 int		ft_atoi(char *str);
+void	set_point(t_map *map, int x, int y, char **split);
+int		hex_to_dex(char *hex);
+int		ft_tolower(int c);
+int		*set_bresenham(t_point p1, t_point p2, int *bresenham_list);
+void	dxdy(int *b_list, t_data *img);
+void	dydx(int *b_list, t_data *img);
+void	bresenham(int *b_list, t_data *img);
 
 #endif

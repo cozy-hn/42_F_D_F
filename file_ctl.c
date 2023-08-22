@@ -6,7 +6,7 @@
 /*   By: jiko <jiko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:58:30 by jiko              #+#    #+#             */
-/*   Updated: 2023/08/09 22:19:38 by jiko             ###   ########.fr       */
+/*   Updated: 2023/08/19 01:31:08 by jiko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	malloc_map(t_map *map)
 	map->map[map->height] = NULL;
 	while (idx < map->height)
 		map->map[idx++] = (t_point *)malloc(sizeof(t_point) * map->width);
-	idx = 0;
 	return (1);
 }
 
@@ -69,22 +68,12 @@ int	set_map(t_map *map, int fd)
 	idx = 0;
 	while (idx < map->height)
 	{
-		idx2 = 0;
+		idx2 = -1;
 		line = get_next_line(fd);
 		split = ft_split(line, ' ');
 		free(line);
-		while (idx2 < map->width)
-		{
-			map->map[idx][idx2].x = idx2;
-			map->map[idx][idx2].y = idx;
-			map->map[idx][idx2].z = ft_atoi(split[idx2]);
-			line = ft_strchr(split[idx2], ',');
-			if (line)
-				map->map[idx][idx2].c = ft_atoi_base(line + 3, 16);
-			else
-				map->map[idx][idx2].c = 0xFFFFFF;
-			idx2++;
-		}
+		while (++idx2 < map->width)
+			set_point(map, idx2, idx, split);
 		dobi_free(idx2, split);
 		idx++;
 	}
@@ -97,6 +86,7 @@ void	open_map(t_map *map, char *path)
 
 	if (!vaild_file_name(path))
 		exit(1);
+	printf("test\n");
 	fd = open(path, O_RDONLY);
 	if (!set_height_width(map, fd))
 		exit(1);

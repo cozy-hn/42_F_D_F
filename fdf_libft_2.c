@@ -6,17 +6,26 @@
 /*   By: jiko <jiko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 22:28:06 by jiko              #+#    #+#             */
-/*   Updated: 2023/08/09 22:30:10 by jiko             ###   ########.fr       */
+/*   Updated: 2023/08/19 01:25:25 by jiko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_tolower(int c)
+int	hex_to_dex(char *hex)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c + 32);
-	return (c);
-}
+	int	ret;
 
-int 
+	ret = 0;
+	while (*hex)
+	{
+		if (*hex >= '0' && *hex <= '9')
+			ret = ret * 16 + (*hex - '0');
+		else if (*hex >= 'a' && *hex <= 'f')
+			ret = ret * 16 + (*hex - 'a' + 10);
+		else if (*hex >= 'A' && *hex <= 'F')
+			ret = ret * 16 + (*hex - 'A' + 10);
+		hex++;
+	}
+	return (ret);
+}
