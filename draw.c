@@ -6,7 +6,7 @@
 /*   By: jiko <jiko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 06:00:16 by jiko              #+#    #+#             */
-/*   Updated: 2023/08/23 06:03:30 by jiko             ###   ########.fr       */
+/*   Updated: 2023/08/24 06:44:17 by jiko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	draw_img(t_map *map, t_data *img)
 		{
 			p1 = map->map[i][j];
 			p2 = map->map[i][j + 1];
-			set_bresenham(p1, p2, bresenham_list);
+			set_bresenham(p1, p2, bresenham_list, map);
 			bresenham(bresenham_list, img);
 		}
 	}
@@ -34,11 +34,8 @@ void	draw_img(t_map *map, t_data *img)
 		{
 			p1 = map->map[j][i];
 			p2 = map->map[j + 1][i];
-			set_bresenham(p1, p2, bresenham_list);
-			if (bresenham_list[5] < bresenham_list[4])
-				dxdy(bresenham_list, img);
-			else
-				dydx(bresenham_list, img);
+			set_bresenham(p1, p2, bresenham_list, map);
+			bresenham(bresenham_list, img);
 		}
 	}
 }

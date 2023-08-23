@@ -6,7 +6,7 @@
 /*   By: jiko <jiko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 20:39:59 by jiko              #+#    #+#             */
-/*   Updated: 2023/08/23 06:09:01 by jiko             ###   ########.fr       */
+/*   Updated: 2023/08/24 06:45:26 by jiko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	main(int argc, char **argv)
 	t_map	map;
 	int		bresenham_list[11];
 
+	if (argc != 2)
+		return (1);
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, Window_Max_X, Window_Max_Y, "FDF");
 	img.img = mlx_new_image(vars.mlx, Window_Max_X, Window_Max_Y);
@@ -34,7 +36,10 @@ int	main(int argc, char **argv)
 	&img.line_length, &img.endian);
 	open_map(&map, argv[1]);
 	draw_img(&map, &img);
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	printf("map.height = %d\n", map.height);
+	printf("map.width = %d\n", map.width);
+	mlx_put_image_to_window(vars.mlx, vars.win, img.img, \
+	Window_Max_X / 2 - map.width * 30, Window_Max_Y / 2 - map.height * 30);
 	mlx_hook(vars.win, KeyPress, 0, mlx_close, &vars);
 	mlx_hook(vars.win, Click_X, 0, click_x, &vars);
 	mlx_loop(vars.mlx);

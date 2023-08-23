@@ -6,7 +6,7 @@
 /*   By: jiko <jiko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 21:25:11 by jiko              #+#    #+#             */
-/*   Updated: 2023/08/23 06:06:45 by jiko             ###   ########.fr       */
+/*   Updated: 2023/08/24 06:44:06 by jiko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int		ft_atoi(char *str);
 void	set_point(t_map *map, int x, int y, char **split);
 int		hex_to_dex(char *hex);
 int		ft_tolower(int c);
-int		*set_bresenham(t_point p1, t_point p2, int *bresenham_list);
+int		*set_bresenham(t_point p1, t_point p2, int *bresenham_list, t_map *map);
 void	dxdy(int *b_list, t_data *img);
 void	dydx(int *b_list, t_data *img);
 void	bresenham(int *b_list, t_data *img);
